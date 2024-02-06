@@ -76,7 +76,15 @@ contract TimeCapsule {
     function getHumanCount() public view returns (uint) {
         return people.length;
     }
-    function getComents(uint256 id) public view returns (uint256[] memory) {
-        return people[id].commentsId;
+    function getComents(uint256 id) public view returns (string[] memory) {
+         // Определение размера массива с учетом количества элементов в people[id].commentsId
+    string[] memory data = new string[](people[id].commentsId.length);
+
+    // Копирование элементов из people[id].commentsId в data
+    for (uint i = 0; i < people[id].commentsId.length; i++) {
+        data[i] = comments[people[id].commentsId[i]].text;
+    }
+
+    return data;
     }
 }
