@@ -1,6 +1,24 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-void main() {
+import 'package:TimeCapsule/shared/provider/web3Contract.dart';
+import 'package:TimeCapsule/shared/provider/web3_driver.dart';
+import 'package:TimeCapsule/shared/scripts/auto_insert_constract.scripts.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:path_provider/path_provider.dart';
+
+Future main() async {
+  await dotenv.load();
+  // print(Random().toString());
+  final Web3Driver web3driver = Web3Driver();
+  ScriptOne(web3driver: web3driver);
+  // print(dotenv.get('CONTRACT_TIME_CAPSULE'));
+  // Comntract();
+
+  // var jsonData = await rootBundle.loadString('lib/shared/config/abi.json');
+  // print(jsonData);
+  // print(await getApplicationDocumentsDirectory());
   runApp(const MyApp());
 }
 
