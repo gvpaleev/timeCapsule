@@ -30,8 +30,8 @@ contract TimeCapsule {
     }
 
     // Массив для хранения записей
-    Comment[] public comments;
-    Human[] public  people;
+    Comment[] private comments;
+    Human[] public  humans;
     
     address usdtAddress = address(0xcA9E56F2f817e27bED23FEFa0208CC3da60A5e6D);
 
@@ -46,7 +46,7 @@ contract TimeCapsule {
         string memory _description,
         string memory _urlIcon
         )public onlyOwner {
-            people.push(Human(
+            humans.push(Human(
                { id: humanId,
                 name: _name,
                 description: _description,
@@ -68,21 +68,26 @@ contract TimeCapsule {
             text: _text
             }
         ));
-        people[_humanId].commentsId.push(commentId);
+        humans[_humanId].commentsId.push(commentId);
         commentId++;
     }
    
     // Функция для получения количества записей
     function getHumanCount() public view returns (uint) {
-        return people.length;
+        return humans.length;
     }
-    function getComents(uint256 id) public view returns (string[] memory) {
-         // Определение размера массива с учетом количества элементов в people[id].commentsId
-    string[] memory data = new string[](people[id].commentsId.length);
+    
+    function getCommentsCount(uint256 id) public view returns (uint) {
+        return humans[id].commentsId.length;
+    }
 
-    // Копирование элементов из people[id].commentsId в data
-    for (uint i = 0; i < people[id].commentsId.length; i++) {
-        data[i] = comments[people[id].commentsId[i]].text;
+    function getComentsForHuman(uint256 id) public view returns (string[] memory) {
+         // Определение размера массива с учетом количества элементов в humans[id].commentsId
+    string[] memory data = new string[](humans[id].commentsId.length);
+
+    // Копирование элементов из humans[id].commentsId в data
+    for (uint i = 0; i < humans[id].commentsId.length; i++) {
+        data[i] = comments[humans[id].commentsId[i]].text;
     }
 
     return data;

@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:TimeCapsule/shared/provider/Human.dart';
 import 'package:flutter/services.dart';
 import 'package:web3dart/web3dart.dart';
@@ -13,7 +12,9 @@ class Web3Driver extends Web3Client {
   late DeployedContract _contract;
 
   Web3Driver() : super(dotenv.get('RPC_URL_NODE'), Client()) {
-    _credentials = EthPrivateKey.createRandom(Random.secure());
+    // _credentials = EthPrivateKey.createRandom(Random.secure());
+    _credentials = EthPrivateKey.fromHex(
+        '34654e917a958da2cd01c3ee56397d2391ffdf0258b7c7fbdea6fbb955875a7c');
     _ownerAddress = _credentials.address;
     _contractAddress = EthereumAddress.fromHex(dotenv.get('CONTRACT_ADDRESS'));
     _contract = DeployedContract(
@@ -33,31 +34,50 @@ class Web3Driver extends Web3Client {
     return Human.fromList(await call(
         sender: _ownerAddress,
         contract: _contract,
-        function: _contract.function('people'),
+        function: _contract.function('humans'),
         params: [id]));
   }
 
-  getComents(BigInt id) async {
-    final comentsId = (await call(
-            sender: _ownerAddress,
-            contract: _contract,
-            function: _contract.function('getComents'),
-            params: [id]))
-        .expand((element) => element)
-        // .map((item) => BigInt.from(item))
-        .toList();
-    // .map((item) => BigInt.from(item))
-    // .toList();
-    List<Future<dynamic>> coments =
-        comentsId.map((elem) => _getComent(elem)).toList();
-    return Future.wait(coments);
-  }
-
-  Future<String> _getComent(BigInt id) async {
-    return (await call(
+  Future<Iterable<String>> getComentsForHuman(BigInt id) async {
+    final commentsCount = await call(
         sender: _ownerAddress,
         contract: _contract,
-        function: _contract.function('comments'),
-        params: [id]))[1];
+        function: _contract.function('getCommentsCount'),
+        params: [id]);
+    if (commentsCount[0] > BigInt.from(0)) {
+      final comments = await call(
+          sender: _ownerAddress,
+          contract: _contract,
+          function: _contract.function('getComentsForHuman'),
+          params: [id]);
+      return comments[0].map<String>((e) => e.toString());
+    }
+    return Iterable.empty();
+  }
+
+  Future<String> setHuman(String user, String desc, String url) async {
+    String txn = await sendTransaction(
+      _credentials,
+      chainId: int.parse(dotenv.get('CHAIN_ID')),
+      Transaction.callContract(
+        contract: _contract,
+        function: _contract.function('setHuman'),
+        parameters: [user, desc, url],
+      ),
+    );
+    return txn;
+  }
+
+  Future<String> setComment(BigInt id, String comment) async {
+    String txn = await sendTransaction(
+      _credentials,
+      chainId: int.parse(dotenv.get('CHAIN_ID')),
+      Transaction.callContract(
+        contract: _contract,
+        function: _contract.function('setComment'),
+        parameters: [id, comment],
+      ),
+    );
+    return txn;
   }
 }

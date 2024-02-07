@@ -3,15 +3,13 @@ class Human {
   String name;
   String description;
   String urlIcon;
-  List<String> comments;
-  Human(this.id, this.name, this.description, this.urlIcon, this.comments);
+  Human(this.id, this.name, this.description, this.urlIcon);
 
   Human.fromList(List<dynamic> list)
       : id = list[0],
         name = list[1],
         description = list[2],
-        urlIcon = list[3],
-        comments = list[4];
+        urlIcon = list[3];
 
   @override
   String toString() {

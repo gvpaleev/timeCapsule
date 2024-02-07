@@ -12,7 +12,7 @@ Future main() async {
   await dotenv.load();
   // print(Random().toString());
   final Web3Driver web3driver = Web3Driver();
-  ScriptOne(web3driver: web3driver);
+  // ScriptOne(web3driver: web3driver);
   // print(dotenv.get('CONTRACT_TIME_CAPSULE'));
   // Comntract();
 
