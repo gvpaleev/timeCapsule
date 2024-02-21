@@ -1,5 +1,8 @@
 import 'package:TimeCapsule/pages/user_screen.dart';
+import 'package:TimeCapsule/shared/bloc/user_comments_bloc.dart';
+import 'package:TimeCapsule/shared/bloc/user_date_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,12 +13,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.white,
+              background: Color.fromARGB(255, 246, 246, 246)),
           useMaterial3: true,
         ),
         initialRoute: '/',
         routes: {
-          '/': (ctx) => const UserScreen(),
+          '/': (ctx) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => UserDateBloc(),
+                  ),
+                  BlocProvider(
+                    create: (context) => UserCommentsBloc(),
+                  ),
+                ],
+                child: UserScreen(),
+              ),
         });
   }
 }
