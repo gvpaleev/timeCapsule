@@ -1,5 +1,4 @@
-import 'package:TimeCapsule/shared/bloc/user_comments_bloc.dart';
-import 'package:TimeCapsule/shared/bloc/user_date_bloc.dart';
+import 'package:TimeCapsule/shared/bloc/person_card_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,19 +56,19 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(16),
-        child: ListView(children: [
-          Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Container(
-                  padding: const EdgeInsets.all(16),
-                  child: BlocBuilder<UserDateBloc, UserDateState>(
-                    builder: (context, state) {
-                      return Column(
+    return BlocBuilder<PersonCardBloc, PersonCardState>(
+      builder: (context, state) {
+        return Container(
+            padding: const EdgeInsets.all(16),
+            child: ListView(children: [
+              Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Container(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
@@ -104,15 +103,11 @@ class Body extends StatelessWidget {
                             child: Text(state.description.split(';')[1]),
                           )
                         ],
-                      );
-                    },
-                  ))),
-          const SizedBox(
-            height: 8,
-          ),
-          BlocBuilder<UserCommentsBloc, UserCommentsState>(
-            builder: (context, state) {
-              return Column(
+                      ))),
+              const SizedBox(
+                height: 8,
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ...state.comments.map((e) => Padding(
@@ -134,9 +129,9 @@ class Body extends StatelessWidget {
                         ),
                       )),
                 ],
-              );
-            },
-          )
-        ]));
+              )
+            ]));
+      },
+    );
   }
 }

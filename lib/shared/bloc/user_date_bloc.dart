@@ -17,27 +17,17 @@ part 'user_date_event.dart';
 part 'user_date_state.dart';
 
 class UserDateBloc extends Bloc<UserDateEvent, UserDateState> {
-  UserDateBloc() : super(const UserDateInitial()) {
+  UserDateBloc() : super(UserDateInitialState()) {
     on<UserDateUpdateEvent>(_update);
-    _install();
   }
   _update(event, emit) async {
-    emit(const UserDateUpdateState(
-        name: 'nameUpdate',
-        description: 'descriptionUpdate',
-        urlIcon: 'urlIconUpdate'));
+    // emit(const UserDateUpdateState(
+    //     name: 'nameUpdate',
+    //     description: 'descriptionUpdate',
+    //     urlIcon: 'urlIconUpdate'));
   }
 
-  _install() async {
-    Box box = await Hive.openBox<String>(dotenv.get('DB_NAME_HIVE'));
-
-    final _credentials = EthPrivateKey.createRandom(Random.secure());
-    final _ownerAddress = _credentials.address;
-    final _contractAddress =
-        EthereumAddress.fromHex(dotenv.get('CONTRACT_ADDRESS'));
-    final _contract = DeployedContract(
-        ContractAbi.fromJson(dotenv.get('CONTRACT_ABI'), 'TimeCapsule'),
-        _contractAddress);
-    // add(UserDateUpdateEvent());
+  String _getPrivateKey() {
+    return 'ss';
   }
 }
