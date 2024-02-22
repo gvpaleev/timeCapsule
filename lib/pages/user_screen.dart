@@ -56,7 +56,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PersonCardBloc, PersonCardState>(
+    return BlocBuilder<PersonCardBloc, PersonCardsState>(
       builder: (context, state) {
         return Container(
             padding: const EdgeInsets.all(16),
@@ -79,7 +79,9 @@ class Body extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    image: NetworkImage(state.urlIcon),
+                                    image: NetworkImage(
+                                        state.activePerson?.urlIcon ??
+                                            'Loading'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -90,8 +92,10 @@ class Body extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(state.name),
-                                  Text(state.description.split(';')[0])
+                                  Text(state.activePerson?.name ?? 'Loading'),
+                                  Text(state.activePerson?.description
+                                          .split(';')[0] ??
+                                      'Loading')
                                 ],
                               ),
                             ],
@@ -100,7 +104,9 @@ class Body extends StatelessWidget {
                             height: 12,
                           ),
                           Container(
-                            child: Text(state.description.split(';')[1]),
+                            child: Text(
+                                state.activePerson?.description.split(';')[1] ??
+                                    'Loading'),
                           )
                         ],
                       ))),
@@ -110,7 +116,7 @@ class Body extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ...state.comments.map((e) => Padding(
+                  ...(state.activePerson?.comments ?? []).map((e) => Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Container(
                           width: double.infinity,
