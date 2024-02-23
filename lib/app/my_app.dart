@@ -1,4 +1,5 @@
-import 'package:TimeCapsule/pages/user_screen.dart';
+import 'package:TimeCapsule/pages/find_person_screen.dart';
+import 'package:TimeCapsule/pages/person_card_screen.dart';
 import 'package:TimeCapsule/shared/bloc/person_card_bloc.dart';
 import 'package:TimeCapsule/shared/bloc/user_date_bloc.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +27,15 @@ class MyApp extends StatelessWidget {
                     create: (context) => UserDateBloc(),
                   ),
                   BlocProvider(
-                    create: (context) => PersonCardBloc(),
+                    create: (context) => PersonCardsBloc(),
                   ),
                 ],
-                child: UserScreen(),
+                child: PersonCardScreen(),
               ),
+          '/findPerson': (ctx) => BlocProvider(
+                create: (context) => PersonCardsBloc(),
+                child: FindPersonScreen(),
+              )
         });
   }
 }
