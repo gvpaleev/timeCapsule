@@ -1,7 +1,7 @@
+import 'package:TimeCapsule/features/person_card_bloc.dart';
+import 'package:TimeCapsule/features/user_date_bloc.dart';
 import 'package:TimeCapsule/pages/find_person_screen.dart';
 import 'package:TimeCapsule/pages/person_card_screen.dart';
-import 'package:TimeCapsule/shared/bloc/person_card_bloc.dart';
-import 'package:TimeCapsule/shared/bloc/user_date_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
