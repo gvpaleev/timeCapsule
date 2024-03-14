@@ -1,4 +1,4 @@
-import 'package:TimeCapsule/features/person_card_bloc.dart';
+import 'package:TimeCapsule/features/old/person_card_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

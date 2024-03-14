@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:TimeCapsule/shared/provider/Human.dart';
+import 'package:TimeCapsule/features/old/shared/provider/Human.dart';
 import 'package:flutter/services.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';

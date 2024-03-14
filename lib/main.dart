@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 Future main() async {
-  await Hive.initFlutter();
-  await dotenv.load();
-  runApp(const MyApp());
+  // await Hive.initFlutter();
+  // await dotenv.load();
+  // runApp(const MyApp());
 }

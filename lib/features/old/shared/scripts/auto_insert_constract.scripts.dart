@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:TimeCapsule/shared/provider/web3_driver.dart';
+import 'package:TimeCapsule/features/old/shared/provider/web3_driver.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';

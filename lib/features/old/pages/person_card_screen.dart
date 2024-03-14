@@ -1,6 +1,6 @@
-import 'package:TimeCapsule/features/person_card_bloc.dart';
-import 'package:TimeCapsule/widgets/body_person_card_wodget.dart';
-import 'package:TimeCapsule/widgets/header_person_card_widget.dart';
+import 'package:TimeCapsule/features/old/person_card_bloc.dart';
+import 'package:TimeCapsule/features/old/widgets/body_person_card_wodget.dart';
+import 'package:TimeCapsule/features/old/widgets/header_person_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
