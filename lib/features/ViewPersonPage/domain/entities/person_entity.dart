@@ -4,9 +4,9 @@ class PersonEntity extends Equatable {
   final String name;
   final String description;
   final String urlImg;
-  final List<CommentEntity> comments;
+  final Iterable<CommentEntity>? comments;
 
-  PersonEntity(
+  const PersonEntity(
       {required this.name,
       required this.description,
       required this.urlImg,
@@ -23,5 +23,5 @@ class PersonEntity extends Equatable {
 class CommentEntity {
   final String comment;
 
-  CommentEntity({required this.comment});
+  const CommentEntity({required this.comment});
 }
