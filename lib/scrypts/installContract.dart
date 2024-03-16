@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
@@ -107,15 +109,16 @@ installContractTimeContract() async {
 
   humansCapsule.forEach((human) async {
     var [name, dataOfbirth, description, imgUrl] = human;
-    await web3Client.sendTransaction(
+    var response = await web3Client.sendTransaction(
       credentials,
       chainId: int.parse(dotenv.get('CHAIN_ID')),
       Transaction.callContract(
-        contract: capsuleContract,
-        function: capsuleContract.function('setHuman'),
-        parameters: [name, description, imgUrl],
-      ),
+          contract: capsuleContract,
+          function: capsuleContract.function('setHuman'),
+          parameters: [name, description, imgUrl],
+          nonce: Random().nextInt(4294967296)),
     );
+    print(response);
   });
 
   print('End scrypt');
