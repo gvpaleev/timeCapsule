@@ -107,7 +107,7 @@ installContractTimeContract() async {
         address
       ]))[0]}');
 
-  humansCapsule.forEach((human) async {
+  for (var human in humansCapsule) {
     var [name, dataOfbirth, description, imgUrl] = human;
     var response = await web3Client.sendTransaction(
       credentials,
@@ -118,8 +118,10 @@ installContractTimeContract() async {
           parameters: [name, description, imgUrl],
           nonce: Random().nextInt(4294967296)),
     );
+    await Future.delayed(Duration(milliseconds: 1500));
     print(response);
-  });
+    break;
+  }
 
   print('End scrypt');
 }
