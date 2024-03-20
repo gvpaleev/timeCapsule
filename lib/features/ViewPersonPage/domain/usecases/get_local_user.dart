@@ -1,4 +1,4 @@
-import 'package:TimeCapsule/features/ViewPersonPage/domain/entities/local_user_entity.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/domain/entities/owner_entity.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/local_user_repository.dart';
 
 class GetLocalUser {
@@ -6,7 +6,7 @@ class GetLocalUser {
 
   GetLocalUser(this.localUserRepository);
 
-  Future<LocalUserEntity> call() async {
+  Future<OwnerEntity> call() async {
     return await localUserRepository.getLocalUser();
   }
 }

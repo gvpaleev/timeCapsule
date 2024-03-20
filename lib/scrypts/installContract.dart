@@ -9,7 +9,7 @@ installContractTimeContract() async {
   await dotenv.load();
 
   late EthPrivateKey credentials = EthPrivateKey.fromHex(
-      '34654e917a958da2cd01c3ee56397d2391ffdf0258b7c7fbdea6fbb955875a7c');
+      '34654e917a958da2cd01c3ee56397d2391ffdf0258b7c7fbdea6fbb955875a7b');
   final address = credentials.address;
   final Web3Client web3Client =
       Web3Client(dotenv.get('RPC_URL_NODE'), Client());
