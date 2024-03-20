@@ -1,5 +1,5 @@
 import 'package:TimeCapsule/features/ViewPersonPage/domain/entities/owner_entity.dart';
 
-abstract class LocalUserRepository {
+abstract class OwnerRepository {
   Future<OwnerEntity> getLocalUser();
 }

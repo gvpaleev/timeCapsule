@@ -1,7 +1,7 @@
 import 'package:TimeCapsule/features/ViewPersonPage/domain/entities/owner_entity.dart';
-import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/local_user_repository.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/owner_repository.dart';
 
-class LocalUserRepositoryImpl extends LocalUserRepository {
+class OwnerRepositoryImpl extends OwnerRepository {
   @override
   Future<OwnerEntity> getLocalUser() {
     // TODO: implement getLocalUser

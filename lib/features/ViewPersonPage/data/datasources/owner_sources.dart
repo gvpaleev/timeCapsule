@@ -1,16 +1,16 @@
-import 'package:TimeCapsule/features/ViewPersonPage/data/models/local_user_model.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/data/models/owner_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class UserDataSources {
+abstract class OwnerDataSources {
   Future<OwnerModel> getUser();
 }
 
 const USER_DB = 'USER_DB';
 
-class UserDataSourcesImpl extends UserDataSources {
+class OwnerDataSourcesImpl extends OwnerDataSources {
   final SharedPreferences sharedPreferences;
 
-  UserDataSourcesImpl({required this.sharedPreferences});
+  OwnerDataSourcesImpl({required this.sharedPreferences});
 
   @override
   Future<OwnerModel> getUser() async {
@@ -24,6 +24,6 @@ class UserDataSourcesImpl extends UserDataSources {
     //   privateKey: privateKey,
     // );
     // TODO: implement getUser
-    throw UnimplementedError();
+    return OwnerModel(privateKey: privateKey);
   }
 }
