@@ -7,6 +7,6 @@ class GetInfoOwner {
   GetInfoOwner(this.localUserRepository);
 
   Future<OwnerEntity> call() async {
-    return await localUserRepository.getLocalUser();
+    return await localUserRepository.getOwner();
   }
 }
