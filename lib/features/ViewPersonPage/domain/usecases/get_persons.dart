@@ -1,12 +1,12 @@
 import 'package:TimeCapsule/features/ViewPersonPage/domain/entities/person_entity.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/person_repository.dart';
 
-class GetAllPersons {
+class GetPersons {
   final PersonRepository personRepository;
 
-  GetAllPersons(this.personRepository);
+  GetPersons(this.personRepository);
 
-  Future<List<PersonEntity>> call() async {
-    return await personRepository.getAllPerson();
+  Future<Iterable<PersonEntity>> call() async {
+    return await personRepository.getPersons();
   }
 }

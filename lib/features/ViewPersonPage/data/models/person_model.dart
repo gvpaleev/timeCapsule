@@ -4,7 +4,7 @@ class PersonModel extends PersonEntity {
   const PersonModel({
     required super.name,
     required super.description,
-    required super.urlImg,
+    required super.imgUrl,
     required super.comments,
   });
 
@@ -12,7 +12,7 @@ class PersonModel extends PersonEntity {
     return PersonModel(
       name: json['name'],
       description: json['description'],
-      urlImg: json['urlImg'],
+      imgUrl: json['urlImg'],
       comments: json['comments'] != null
           ? (json['comments'] as List<dynamic>)
               .map((e) => CommentModel.fromJson(e))
@@ -24,7 +24,7 @@ class PersonModel extends PersonEntity {
     return {
       'name': name,
       'description': description,
-      'urlImg': urlImg,
+      'urlImg': imgUrl,
     };
   }
 }
