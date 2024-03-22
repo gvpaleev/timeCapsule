@@ -5,8 +5,8 @@ import 'package:TimeCapsule/features/old/pages/person_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppOld extends StatelessWidget {
+  const MyAppOld({super.key});
 
   // This widget is the root of your application.
   @override

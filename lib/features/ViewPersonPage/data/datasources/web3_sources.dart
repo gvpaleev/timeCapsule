@@ -23,16 +23,16 @@ class Web3DataSourceImpl extends Web3DataSource {
   Web3DataSourceImpl({
     required String privateKeyString,
     required String usdtContractAddressString,
-    required String abiUsdtContractAddressString,
+    required String abiUsdtContractString,
     required String bnbContractAddressString,
-    required String abiBnbContractAddressString,
+    required String abiBnbContractString,
   }) : super(
             credentials: EthPrivateKey.fromHex(privateKeyString),
             usdtContract: DeployedContract(
-                ContractAbi.fromJson(abiUsdtContractAddressString, 'usdt'),
+                ContractAbi.fromJson(abiUsdtContractString, 'usdt'),
                 EthereumAddress.fromHex(usdtContractAddressString)),
             capsuleContract: DeployedContract(
-                ContractAbi.fromJson(abiBnbContractAddressString, 'capsule'),
+                ContractAbi.fromJson(abiBnbContractString, 'capsule'),
                 EthereumAddress.fromHex(bnbContractAddressString)));
 
   @override
