@@ -1,4 +1,6 @@
 # Miscellaneous
+
+
 *.class
 *.log
 *.pyc
@@ -30,6 +32,10 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/android/
+/iso/
+/linux/
+/macos/
 
 # Symbolication related
 app.*.symbols
