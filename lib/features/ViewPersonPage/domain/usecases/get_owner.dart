@@ -2,11 +2,11 @@ import 'package:TimeCapsule/features/ViewPersonPage/domain/entities/owner_entity
 import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/owner_repository.dart';
 
 class GetOwner {
-  final OwnerRepository localUserRepository;
+  final OwnerRepository ownerRepository;
 
-  GetOwner(this.localUserRepository);
+  GetOwner(this.ownerRepository);
 
   Future<OwnerEntity> call() async {
-    return await localUserRepository.getOwner();
+    return await ownerRepository.getOwner();
   }
 }

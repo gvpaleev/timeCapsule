@@ -13,22 +13,33 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   // BLoC / Cubit
-  sl.registerFactory(() => PersonsBloc(getPersons: sl()));
+  sl.registerFactory<PersonsBloc>(() {
+    print('object');
+
+    return PersonsBloc(getPersons: sl());
+  });
   // UseCases
-  sl.registerLazySingletonAsync(() async {
+  sl.registerLazySingleton(() {
+    print('object');
+
     return GetPersons(sl());
   });
-  sl.registerLazySingletonAsync(() async {
+  sl.registerLazySingleton(() {
     return GetOwner(sl());
   });
   // Repository
-  sl.registerLazySingletonAsync<PersonRepository>(() async {
+  sl.registerLazySingleton<PersonRepository>(() {
+    print('object');
+
     return PersonRepositoryImpl(web3dataSource: sl());
   });
 
-  sl.registerLazySingletonAsync<Web3DataSource>(() async {
+  sl.registerLazySingleton<Web3DataSource>(() {
+    print('object');
+
     return Web3DataSourceImpl(
-      privateKeyString: await sl<OwnerDataSources>().getPrivateKey(),
+      privateKeyString:
+          '34654e917a958da2cd01c3ee56397d2391ffdf0258b7c7fbdea6fbb955875a7c', //await sl<OwnerDataSources>().getPrivateKey(),
       usdtContractAddressString: dotenv.get('USDT_CONTRACT_ADDRESS'),
       abiUsdtContractString: dotenv.get('USDT_CONTRACT_ABI'),
       bnbContractAddressString: dotenv.get('CAPSULE_TIME_CONTRACT_ADDRESS'),
@@ -36,7 +47,7 @@ Future<void> init() async {
     );
   });
 
-  sl.registerLazySingletonAsync<OwnerDataSources>(() async {
+  sl.registerLazySingleton<OwnerDataSources>(() {
     return OwnerDataSourcesImpl(
       sharedPreferences: sl(),
     );
@@ -45,7 +56,7 @@ Future<void> init() async {
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingletonAsync(() async {
+  sl.registerLazySingleton(() async {
     return sharedPreferences;
   });
 }
