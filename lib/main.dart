@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         // ),
         BlocProvider<PersonsBloc>(
           create: (context) {
-            return sl<PersonsBloc>();
+            return sl<PersonsBloc>()..add(PersonsEvent.started());
             //..add(PersonsEvent.started());
           },
         ),

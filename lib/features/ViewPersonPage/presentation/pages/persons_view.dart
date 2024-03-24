@@ -59,19 +59,68 @@ class Body extends StatelessWidget {
       }, loading: () {
         return Container(
           child: const Center(
-            child: Text('initial'),
+            child: Text('loading'),
           ),
         );
       }, loaded: (persons) {
         return Container(
-          child: const Center(
-            child: Text('initial'),
+          child: ListView(
+            children: [
+              ...(persons ?? []).map(
+                (person) => Container(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Container(
+                      width: 200,
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: NetworkImage(person.imgUrl),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(person.name),
+                                    Text(person.description.split(';')[0])
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       }, error: () {
         return Container(
           child: const Center(
-            child: Text('initial'),
+            child: Text('error'),
           ),
         );
       });

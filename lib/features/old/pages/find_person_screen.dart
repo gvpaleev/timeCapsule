@@ -48,51 +48,59 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: ListView(children: [
-                    ...(state.personsSorted ?? []).map((person) => Container(
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Container(
+                  child: ListView(
+                    children: [
+                      ...(state.personsSorted ?? []).map(
+                        (person) => Container(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Container(
-                                padding: const EdgeInsets.all(16),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 100,
-                                          height: 100,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                              image: NetworkImage(
-                                                  person.urlIcon ?? 'Loading'),
-                                              fit: BoxFit.cover,
-                                            ),
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            image: NetworkImage(person.urlIcon),
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(person.name ?? 'Loading'),
-                                            Text(person.description
-                                                    .split(';')[0] ??
-                                                'Loading')
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )))))
-                  ]),
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(person.name),
+                                          Text(
+                                            person.description,
+                                            overflow: TextOverflow.visible,
+                                            maxLines: null,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
