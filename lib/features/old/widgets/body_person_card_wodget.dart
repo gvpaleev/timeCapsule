@@ -85,24 +85,26 @@ class BodyPersonCardWodget extends StatelessWidget {
                   ),
                 ),
               ),
-        ...(state.activePerson?.comments ?? []).map((e) => Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(e.keys.join('')),
-                    Text(e.values.join('')),
-                  ],
-                ),
+        ...(state.activePerson?.comments ?? []).map(
+          (e) => Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
               ),
-            )),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(e.keys.join('')),
+                  Text(e.values.join('')),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

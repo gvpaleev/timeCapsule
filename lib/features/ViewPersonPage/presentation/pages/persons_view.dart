@@ -5,8 +5,8 @@ import 'package:TimeCapsule/features/old/widgets/header_person_card_widget.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PersonViewScreen extends StatelessWidget {
-  const PersonViewScreen({super.key});
+class PersonsViewScreen extends StatelessWidget {
+  const PersonsViewScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,48 +67,56 @@ class Body extends StatelessWidget {
           child: ListView(
             children: [
               ...(persons ?? []).map(
-                (person) => Container(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
+                (person) => GestureDetector(
+                  onTap: () {
+                    print(person);
+                    Navigator.pushNamed(context, '/personView',
+                        arguments: person);
+                  },
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 6),
                     child: Container(
-                      width: 200,
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: NetworkImage(person.imgUrl),
-                                    fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Container(
+                        width: 200,
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: NetworkImage(person.imgUrl),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(person.name),
-                                    Text(person.description.split(';')[0])
-                                  ],
+                                const SizedBox(
+                                  width: 20,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(person.name),
+                                      Text(person.description.split(';')[0])
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

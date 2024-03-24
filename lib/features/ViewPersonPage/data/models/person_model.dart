@@ -16,7 +16,7 @@ class PersonModel extends PersonEntity {
       comments: json['comments'] != null
           ? (json['comments'] as List<dynamic>)
               .map((e) => CommentModel.fromJson(e))
-          : null,
+          : [],
     );
   }
 

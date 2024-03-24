@@ -1,5 +1,6 @@
 import 'package:TimeCapsule/app/my_app.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/persons_bloc.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/presentation/pages/person_view.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/pages/persons_view.dart';
 import 'package:TimeCapsule/locator_service.dart';
 import 'package:TimeCapsule/scrypts/installContract.dart';
@@ -41,7 +42,11 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: PersonViewScreen(),
+        routes: {
+          '/': (context) => PersonsViewScreen(),
+          '/personView': (context) => PersonViewScreen(),
+        },
+        initialRoute: '/',
       ),
     );
   }
