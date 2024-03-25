@@ -2,20 +2,22 @@ import 'package:TimeCapsule/features/ViewPersonPage/data/models/person_model.dar
 import 'package:web3dart/web3dart.dart';
 
 abstract class Web3DataSource {
+  final String privateKey;
   final EthPrivateKey credentials;
 
   final DeployedContract usdtContract;
   final DeployedContract capsuleContract;
 
-  Web3DataSource({
-    required this.credentials,
-    required this.usdtContract,
-    required this.capsuleContract,
-  });
+  Web3DataSource(
+      {required this.credentials,
+      required this.usdtContract,
+      required this.capsuleContract,
+      required this.privateKey});
 
   Future<String> getAddresOwner();
   Future<String> getBalanceBnb();
   Future<String> getBalanceUsdt();
+  Future<String> getPrivateKey();
   Future<Iterable<PersonModel>> getPersons();
 }
 
@@ -33,7 +35,8 @@ class Web3DataSourceImpl extends Web3DataSource {
                 EthereumAddress.fromHex(usdtContractAddressString)),
             capsuleContract: DeployedContract(
                 ContractAbi.fromJson(abiBnbContractString, 'capsule'),
-                EthereumAddress.fromHex(bnbContractAddressString)));
+                EthereumAddress.fromHex(bnbContractAddressString)),
+            privateKey: privateKeyString);
 
   @override
   Future<String> getBalanceBnb() async {
@@ -57,7 +60,8 @@ class Web3DataSourceImpl extends Web3DataSource {
         'Joe Biden',
         '20/11/1942',
         'Joseph Robinette Biden Jr. is an American politician who is the 46th and current president of the United States. A member of the Democratic Party, he previously served as the 47th vice president from 2009 to 2017 under President Barack Obama and represented Delaware in the United States Senate from 1973 to 2009',
-        'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/99/756509742968997.jpg'
+        'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/99/756509742968997.jpg',
+        ['Comment 1', 'comment 2', 'comment 3', 'comment 4'],
       ],
       [
         'Xi Jinping',
@@ -145,5 +149,10 @@ class Web3DataSourceImpl extends Web3DataSource {
           comments: (comment as Iterable)
               .map<CommentModel>((e) => CommentModel(comment: e as String)));
     });
+  }
+
+  @override
+  Future<String> getPrivateKey() async {
+    return privateKey;
   }
 }

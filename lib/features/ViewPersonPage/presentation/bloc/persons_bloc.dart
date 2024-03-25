@@ -10,7 +10,7 @@ part 'persons_bloc.freezed.dart';
 class PersonsBloc extends Bloc<PersonsEvent, PersonsState> {
   final GetPersons getPersons;
   PersonsBloc({required this.getPersons}) : super(_Initial()) {
-    on<_StartedEvent>((event, emit) async {
+    on<_Started>((event, emit) async {
       emit(_Loading());
       emit(_Loaded(persons: await getPersons()));
     });

@@ -1,4 +1,5 @@
 import 'package:TimeCapsule/app/my_app.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/owner_bloc.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/persons_bloc.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/pages/person_view.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/pages/persons_view.dart';
@@ -29,11 +30,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider<PersonListCubit>(
-        //   create: (context) {
-        //     return sl<PersonListCubit>()..loadPerson();
-        //   },
-        // ),
+        BlocProvider<OwnerBloc>(
+          create: (context) {
+            return sl<OwnerBloc>()..add(OwnerEvent.started());
+          },
+        ),
         BlocProvider<PersonsBloc>(
           create: (context) {
             return sl<PersonsBloc>()..add(PersonsEvent.started());

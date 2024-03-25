@@ -14,31 +14,31 @@ class PersonViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            heroTag: 'fab1',
-            onPressed: () {
-              // Navigator.pushNamed(context, '/findPerson');
-            },
-            backgroundColor: Colors.white,
-            child: const Icon(Icons.person_search),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          FloatingActionButton(
-            heroTag: 'fab2',
-            onPressed: () {
-              // PersonCardsBloc bloc = BlocProvider.of<PersonCardsBloc>(context);
-              // bloc.add(UpdateSendingMessagesEvent(message: ''));
-            },
-            backgroundColor: Colors.white,
-            child: const Icon(Icons.comment),
-          ),
-        ],
-      ),
+      // floatingActionButton: Column(
+      //   mainAxisAlignment: MainAxisAlignment.end,
+      //   children: [
+      //     FloatingActionButton(
+      //       heroTag: 'fab1',
+      //       onPressed: () {
+      //         // Navigator.pushNamed(context, '/findPerson');
+      //       },
+      //       backgroundColor: Colors.white,
+      //       child: const Icon(Icons.person_search),
+      //     ),
+      //     const SizedBox(
+      //       height: 8,
+      //     ),
+      //     FloatingActionButton(
+      //       heroTag: 'fab2',
+      //       onPressed: () {
+      //         // PersonCardsBloc bloc = BlocProvider.of<PersonCardsBloc>(context);
+      //         // bloc.add(UpdateSendingMessagesEvent(message: ''));
+      //       },
+      //       backgroundColor: Colors.white,
+      //       child: const Icon(Icons.comment),
+      //     ),
+      //   ],
+      // ),
       body: Body(),
     );
   }
@@ -173,9 +173,7 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-          ...(
-              //personEntity.comments
-              ['ssssssssssssssssssss', 'asddddddddddddddd']).map(
+          ...(personModel.comments).map(
             (e) => Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Container(
@@ -188,7 +186,7 @@ class Body extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(e as String)
+                    Text(e.toString())
                     // Text(e.keys.join('')),
                     // Text(e.values.join('')),
                   ],

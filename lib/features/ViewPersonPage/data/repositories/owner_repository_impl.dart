@@ -16,6 +16,7 @@ class OwnerRepositoryImpl extends OwnerRepository {
       address: await web3dataSource.getAddresOwner(),
       balanceBNB: await web3dataSource.getBalanceBnb(),
       balanceUSDT: await web3dataSource.getBalanceUsdt(),
+      privateKey: await web3dataSource.getPrivateKey(),
     );
   }
 }

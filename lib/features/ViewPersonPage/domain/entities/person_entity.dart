@@ -24,4 +24,10 @@ class CommentEntity {
   final String comment;
 
   const CommentEntity({required this.comment});
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return comment;
+  }
 }

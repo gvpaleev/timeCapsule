@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'persons_bloc.dart';
+part of 'owner_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PersonsEvent {
+mixin _$OwnerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -51,16 +51,16 @@ mixin _$PersonsEvent {
 }
 
 /// @nodoc
-abstract class $PersonsEventCopyWith<$Res> {
-  factory $PersonsEventCopyWith(
-          PersonsEvent value, $Res Function(PersonsEvent) then) =
-      _$PersonsEventCopyWithImpl<$Res, PersonsEvent>;
+abstract class $OwnerEventCopyWith<$Res> {
+  factory $OwnerEventCopyWith(
+          OwnerEvent value, $Res Function(OwnerEvent) then) =
+      _$OwnerEventCopyWithImpl<$Res, OwnerEvent>;
 }
 
 /// @nodoc
-class _$PersonsEventCopyWithImpl<$Res, $Val extends PersonsEvent>
-    implements $PersonsEventCopyWith<$Res> {
-  _$PersonsEventCopyWithImpl(this._value, this._then);
+class _$OwnerEventCopyWithImpl<$Res, $Val extends OwnerEvent>
+    implements $OwnerEventCopyWith<$Res> {
+  _$OwnerEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,7 +77,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$PersonsEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$OwnerEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -91,7 +91,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'PersonsEvent.started()';
+    return 'OwnerEvent.started()';
   }
 
   @override
@@ -160,17 +160,17 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements PersonsEvent {
+abstract class _Started implements OwnerEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-mixin _$PersonsState {
+mixin _$OwnerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Iterable<PersonEntity> persons) loaded,
+    required TResult Function(OwnerEntity ownerEntity) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -178,7 +178,7 @@ mixin _$PersonsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Iterable<PersonEntity> persons)? loaded,
+    TResult? Function(OwnerEntity ownerEntity)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -186,7 +186,7 @@ mixin _$PersonsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Iterable<PersonEntity> persons)? loaded,
+    TResult Function(OwnerEntity ownerEntity)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -219,16 +219,16 @@ mixin _$PersonsState {
 }
 
 /// @nodoc
-abstract class $PersonsStateCopyWith<$Res> {
-  factory $PersonsStateCopyWith(
-          PersonsState value, $Res Function(PersonsState) then) =
-      _$PersonsStateCopyWithImpl<$Res, PersonsState>;
+abstract class $OwnerStateCopyWith<$Res> {
+  factory $OwnerStateCopyWith(
+          OwnerState value, $Res Function(OwnerState) then) =
+      _$OwnerStateCopyWithImpl<$Res, OwnerState>;
 }
 
 /// @nodoc
-class _$PersonsStateCopyWithImpl<$Res, $Val extends PersonsState>
-    implements $PersonsStateCopyWith<$Res> {
-  _$PersonsStateCopyWithImpl(this._value, this._then);
+class _$OwnerStateCopyWithImpl<$Res, $Val extends OwnerState>
+    implements $OwnerStateCopyWith<$Res> {
+  _$OwnerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -245,7 +245,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PersonsStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$OwnerStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -259,7 +259,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PersonsState.initial()';
+    return 'OwnerState.initial()';
   }
 
   @override
@@ -276,7 +276,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Iterable<PersonEntity> persons) loaded,
+    required TResult Function(OwnerEntity ownerEntity) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -287,7 +287,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Iterable<PersonEntity> persons)? loaded,
+    TResult? Function(OwnerEntity ownerEntity)? loaded,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -298,7 +298,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Iterable<PersonEntity> persons)? loaded,
+    TResult Function(OwnerEntity ownerEntity)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -346,7 +346,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements PersonsState {
+abstract class _Initial implements OwnerState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -359,7 +359,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$PersonsStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$OwnerStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -373,7 +373,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'PersonsState.loading()';
+    return 'OwnerState.loading()';
   }
 
   @override
@@ -390,7 +390,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Iterable<PersonEntity> persons) loaded,
+    required TResult Function(OwnerEntity ownerEntity) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -401,7 +401,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Iterable<PersonEntity> persons)? loaded,
+    TResult? Function(OwnerEntity ownerEntity)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -412,7 +412,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Iterable<PersonEntity> persons)? loaded,
+    TResult Function(OwnerEntity ownerEntity)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -460,7 +460,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements PersonsState {
+abstract class _Loading implements OwnerState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -470,12 +470,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Iterable<PersonEntity> persons});
+  $Res call({OwnerEntity ownerEntity});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$PersonsStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$OwnerStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -484,13 +484,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? persons = null,
+    Object? ownerEntity = null,
   }) {
     return _then(_$LoadedImpl(
-      persons: null == persons
-          ? _value.persons
-          : persons // ignore: cast_nullable_to_non_nullable
-              as Iterable<PersonEntity>,
+      ownerEntity: null == ownerEntity
+          ? _value.ownerEntity
+          : ownerEntity // ignore: cast_nullable_to_non_nullable
+              as OwnerEntity,
     ));
   }
 }
@@ -498,14 +498,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.persons});
+  const _$LoadedImpl({required this.ownerEntity});
 
   @override
-  final Iterable<PersonEntity> persons;
+  final OwnerEntity ownerEntity;
 
   @override
   String toString() {
-    return 'PersonsState.loaded(persons: $persons)';
+    return 'OwnerState.loaded(ownerEntity: $ownerEntity)';
   }
 
   @override
@@ -513,12 +513,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other.persons, persons));
+            (identical(other.ownerEntity, ownerEntity) ||
+                other.ownerEntity == ownerEntity));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(persons));
+  int get hashCode => Object.hash(runtimeType, ownerEntity);
 
   @JsonKey(ignore: true)
   @override
@@ -531,10 +531,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Iterable<PersonEntity> persons) loaded,
+    required TResult Function(OwnerEntity ownerEntity) loaded,
     required TResult Function() error,
   }) {
-    return loaded(persons);
+    return loaded(ownerEntity);
   }
 
   @override
@@ -542,10 +542,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Iterable<PersonEntity> persons)? loaded,
+    TResult? Function(OwnerEntity ownerEntity)? loaded,
     TResult? Function()? error,
   }) {
-    return loaded?.call(persons);
+    return loaded?.call(ownerEntity);
   }
 
   @override
@@ -553,12 +553,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Iterable<PersonEntity> persons)? loaded,
+    TResult Function(OwnerEntity ownerEntity)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(persons);
+      return loaded(ownerEntity);
     }
     return orElse();
   }
@@ -601,11 +601,11 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements PersonsState {
-  const factory _Loaded({required final Iterable<PersonEntity> persons}) =
+abstract class _Loaded implements OwnerState {
+  const factory _Loaded({required final OwnerEntity ownerEntity}) =
       _$LoadedImpl;
 
-  Iterable<PersonEntity> get persons;
+  OwnerEntity get ownerEntity;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -620,7 +620,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$PersonsStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$OwnerStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -634,7 +634,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'PersonsState.error()';
+    return 'OwnerState.error()';
   }
 
   @override
@@ -651,7 +651,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Iterable<PersonEntity> persons) loaded,
+    required TResult Function(OwnerEntity ownerEntity) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -662,7 +662,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Iterable<PersonEntity> persons)? loaded,
+    TResult? Function(OwnerEntity ownerEntity)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -673,7 +673,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Iterable<PersonEntity> persons)? loaded,
+    TResult Function(OwnerEntity ownerEntity)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -721,6 +721,6 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements PersonsState {
+abstract class _Error implements OwnerState {
   const factory _Error() = _$ErrorImpl;
 }

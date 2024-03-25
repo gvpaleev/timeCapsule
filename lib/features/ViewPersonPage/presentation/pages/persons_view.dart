@@ -1,3 +1,4 @@
+import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/owner_bloc.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/persons_bloc.dart';
 import 'package:TimeCapsule/features/old/person_card_bloc.dart';
 import 'package:TimeCapsule/features/old/widgets/body_person_card_wodget.dart';
@@ -11,30 +12,60 @@ class PersonsViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            heroTag: 'fab1',
-            onPressed: () {
-              // Navigator.pushNamed(context, '/findPerson');
+      floatingActionButton: FloatingActionButton(
+        heroTag: 'fab1',
+        onPressed: () {
+          showDialog(
+            context: context,
+            barrierDismissible: false, // user must tap button!
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Wallet'),
+                content: BlocBuilder<OwnerBloc, OwnerState>(
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () {
+                        return Container(
+                          child: Text('AlertDialog description'),
+                        );
+                      },
+                      loading: () {
+                        return Container(
+                          child: Text('AlertDialog description'),
+                        );
+                      },
+                      loaded: (owner) {
+                        return Container(
+                          child: Column(
+                            children: [
+                              Text('Address: ${owner.address}'),
+                              Text('Balance BNB: ${owner.balanceBNB}'),
+                              Text('Balance USDT: ${owner.balanceUSDT}'),
+                              Text('Private Key: ${owner.privateKey}'),
+                            ],
+                          ),
+                        );
+                      },
+                      error: () {
+                        return Container(
+                          child: Text('AlertDialog description'),
+                        );
+                      },
+                    );
+                  },
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: const Text('OK'),
+                  ),
+                ],
+              );
             },
-            backgroundColor: Colors.white,
-            child: const Icon(Icons.person_search),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          FloatingActionButton(
-            heroTag: 'fab2',
-            onPressed: () {
-              // PersonCardsBloc bloc = BlocProvider.of<PersonCardsBloc>(context);
-              // bloc.add(UpdateSendingMessagesEvent(message: ''));
-            },
-            backgroundColor: Colors.white,
-            child: const Icon(Icons.comment),
-          ),
-        ],
+          );
+        },
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.account_balance_wallet_outlined),
       ),
       body: Body(),
     );

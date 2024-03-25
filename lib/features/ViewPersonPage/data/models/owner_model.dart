@@ -5,5 +5,6 @@ class OwnerModel extends OwnerEntity {
     required super.address,
     required super.balanceBNB,
     required super.balanceUSDT,
+    required super.privateKey,
   });
 }

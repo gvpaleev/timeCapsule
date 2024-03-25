@@ -1,9 +1,12 @@
 import 'package:TimeCapsule/features/ViewPersonPage/data/datasources/owner_sources.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/data/datasources/web3_sources.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/data/repositories/owner_repository_impl.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/data/repositories/person_repository_impl.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/owner_repository.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/domain/repositories/person_repository.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/domain/usecases/get_owner.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/domain/usecases/get_persons.dart';
+import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/owner_bloc.dart';
 import 'package:TimeCapsule/features/ViewPersonPage/presentation/bloc/persons_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
@@ -18,6 +21,12 @@ Future<void> init() async {
 
     return PersonsBloc(getPersons: sl());
   });
+
+  sl.registerFactory<OwnerBloc>(() {
+    print('object');
+
+    return OwnerBloc(getOwner: sl());
+  });
   // UseCases
   sl.registerLazySingleton(() {
     print('object');
@@ -25,6 +34,8 @@ Future<void> init() async {
     return GetPersons(sl());
   });
   sl.registerLazySingleton(() {
+    print('object');
+
     return GetOwner(sl());
   });
   // Repository
@@ -32,6 +43,9 @@ Future<void> init() async {
     print('object');
 
     return PersonRepositoryImpl(web3dataSource: sl());
+  });
+  sl.registerLazySingleton<OwnerRepository>(() {
+    return OwnerRepositoryImpl(web3dataSource: sl());
   });
 
   sl.registerLazySingleton<Web3DataSource>(() {
@@ -47,11 +61,6 @@ Future<void> init() async {
     );
   });
 
-  sl.registerLazySingleton<OwnerDataSources>(() {
-    return OwnerDataSourcesImpl(
-      sharedPreferences: sl(),
-    );
-  });
   // Core
 
   // External
