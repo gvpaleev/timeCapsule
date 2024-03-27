@@ -6,7 +6,18 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract TimeCapsule {
     address private _owner;
-    
+    struct Comment {
+        uint256 id;
+        string text;
+    }
+    struct Human {
+        uint256 id;
+        string name;
+        string description;
+        string urlIcon;
+        uint256[] commentsId;
+    }
+
     modifier onlyOwner() {
         require(msg.sender == _owner, "Not the owner");
         _; // Продолжаем выполнение функции, если проверка успешна
@@ -29,6 +40,7 @@ contract TimeCapsule {
         uint256[] commentsId;
     }
 
+`   mapping (uint256 => string) persons;
     // Массив для хранения записей
     Comment[] private comments;
     Human[] public  humans;
