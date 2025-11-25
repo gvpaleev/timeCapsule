@@ -1,18 +1,72 @@
+# TimeCapsule
 
-MyUSDT bnb contract 0xcA9E56F2f817e27bED23FEFa0208CC3da60A5e6D
+A Flutter-based decentralized application for creating digital memorials on the blockchain.
 
+## Overview
 
-A new Flutter project.
+TimeCapsule is a cross-platform mobile and web application that allows users to create and manage digital memorials for people. Each memorial can store biographical information and receive comments from visitors, all recorded on the blockchain for permanent preservation.
+
+## Features
+
+- Create digital memorials with name, description, and photo
+- Add comments to existing memorials
+- Blockchain-based storage using Ethereum smart contracts
+- USDT integration for transactions
+- Cross-platform support (iOS, Android, Web, Windows, macOS, Linux)
+
+## Smart Contract
+
+Contract Address (BNB Chain): `0xcA9E56F2f817e27bED23FEFa0208CC3da60A5e6D`
+
+The TimeCapsule smart contract provides:
+- Memorial creation (owner-only)
+- Public comment submission
+- Permanent on-chain storage
+- Comment retrieval by memorial ID
+
+## Tech Stack
+
+- **Framework**: Flutter 3.2.6+
+- **Blockchain**: web3dart, web_socket_channel
+- **State Management**: flutter_bloc
+- **Local Storage**: Hive
+- **Dependency Injection**: get_it
+- **Environment Config**: flutter_dotenv
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK 3.2.6 or higher
+- Dart SDK
+- Web3 wallet (for blockchain interactions)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository
+2. Install dependencies:
+```bash
+flutter pub get
+```
+
+3. Configure environment variables in `.env` file
+
+4. Run the app:
+```bash
+flutter run
+```
+
+## Project Structure
+
+```
+lib/
+├── app/              # App initialization
+├── features/         # Feature modules
+│   └── ViewPersonPage/  # Memorial viewing functionality
+├── scrypts/          # Smart contract interaction scripts
+└── locator_service.dart  # Dependency injection setup
+```
+
+## License
+
+Private project - not published to pub.dev
